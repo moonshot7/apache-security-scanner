@@ -1,4 +1,5 @@
 import requests
+import os
 import logging
 import smtplib
 import subprocess
@@ -13,9 +14,9 @@ logging.basicConfig(filename='/home/kali/sec_scan.log', level=logging.INFO, form
 # Email configuration
 EMAIL_HOST = "smtp.gmail.com"  # Gmail SMTP server
 EMAIL_PORT = 587  # Gmail SMTP port
-EMAIL_USER = "Dahee8312@gmail.com"  # Gmail address
-EMAIL_PASSWORD = "Password"  #Gmail app password
-EMAIL_RECEIVER = "miin.hoo831@gmail.com"  # Receiver's email address
+EMAIL_USER = os.getenv("EMAIL_USER") # Gmail address
+EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")  #Gmail app password
+EMAIL_RECEIVER = "Email"  # Receiver's email address
 
 if not EMAIL_USER or not EMAIL_PASSWORD:
     raise ValueError("Email credentials are not set in environment variables.")
